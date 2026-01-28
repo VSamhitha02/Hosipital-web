@@ -6,13 +6,13 @@ body {
     scroll-behavior: smooth;
   @apply bg-white text-neutral-900;
 /* Background section till Why Choose Us */
-.hero-bg {
+/* .FindDoctorshero-bg {
   position: relative;
-  background-image: url("C:./images/hosipital.jfif");
+  background-image: url("/images/child1.png");
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
-}
+} */
 
 /* White overlay for readability */
 .hero-bg::before {

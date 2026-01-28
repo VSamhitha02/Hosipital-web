@@ -3,9 +3,9 @@ export default function FindDoctorsHero() {
     <section
       className="relative min-h-screen flex items-center justify-center text-center"
       style={{
-        backgroundImage: "url('C:\project2\my-payload-app\public\images\hosipital.jfif')",
-        backgroundSize: "cover",
-        backgroundPosition: "center",
+        backgroundImage: "url('/images/child1.png')",
+        // backgroundSize: "cover",
+        // backgroundPosition: "center",
       }}
     >
       {/* Overlay */}

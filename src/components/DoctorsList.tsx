@@ -1,47 +1,37 @@
-export default function DoctorsList() {
-  const doctors = [
-    {
-      name: "Dr. John Doe",
-      specialization: "Pediatric Specialist",
-    },
-    {
-      name: "Dr. Sarah Smith",
-      specialization: "Child Cardiologist",
-    },
-    {
-      name: "Dr. Alex Kumar",
-      specialization: "Neonatologist",
-    },
-  ]
+import Image from 'next/image'
+import { getDoctors } from '@/lib/getDoctors'
+
+export default async function DoctorsList() {
+  const doctors = await getDoctors()
 
   return (
-    <section className="py-16 bg-gray-50">
-      {/* Heading */}
-      <div className="max-w-6xl mx-auto px-6 mb-8">
-        <h2 className="text-3xl font-bold text-gray-900">
-          Featured Doctors
-        </h2>
-      </div>
+    <section className="max-w-7xl mx-auto px-6 py-20">
+      <h2 className="text-3xl font-bold mb-12 text-center">
+        Our Doctors
+      </h2>
 
-      {/* Cards */}
-      <div className="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-8 px-6">
-        {doctors.map((doc, i) => (
+      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8">
+        {doctors.map((doctor: any) => (
           <div
-            key={i}
-            className="bg-white rounded-2xl shadow-sm hover:shadow-md transition p-8 h-full"
+            key={doctor.id}
+            className="rounded-xl border shadow-sm overflow-hidden bg-white"
           >
-            {/* Avatar */}
-            <div className="w-32 h-32 mx-auto rounded-full bg-gray-200 mb-6"></div>
+            <Image
+              src={doctor.photo.url}
+              alt={doctor.name}
+              width={400}
+              height={300}
+              className="w-full h-64 object-cover"
+            />
 
-            {/* Name */}
-            <h3 className="text-lg font-semibold text-gray-900 text-center">
-              {doc.name}
-            </h3>
-
-            {/* Specialization */}
-            <p className="text-sm text-gray-500 text-center mt-1">
-              {doc.specialization}
-            </p>
+            <div className="p-4 text-center">
+              <h3 className="text-lg font-semibold">
+                {doctor.name}
+              </h3>
+              <p className="text-sm text-gray-600">
+                {doctor.specialization}
+              </p>
+            </div>
           </div>
         ))}
       </div>

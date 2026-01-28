@@ -9,8 +9,13 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body>
-        <Header />
-        {children}
+        {/* <div className="bg-red-500 text-white p-2">NAV TEST</div> */}
+
+        <Header /> 
+        <main className="pt-28">
+          {children}
+          </main>    
+        
       </body>
     </html>
   )
