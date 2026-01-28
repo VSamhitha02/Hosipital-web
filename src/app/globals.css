@@ -1,0 +1,32 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+    scroll-behavior: smooth;
+  @apply bg-white text-neutral-900;
+/* Background section till Why Choose Us */
+.hero-bg {
+  position: relative;
+  background-image: url("C:./images/hosipital.jfif");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+/* White overlay for readability */
+.hero-bg::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(255, 255, 255, 0.85);
+  z-index: 1;
+}
+
+/* Content stays above overlay */
+.hero-bg-content {
+  position: relative;
+  z-index: 2;
+}
+
+}
