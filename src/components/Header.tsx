@@ -65,7 +65,7 @@ export default function Header() {
       </div>
 
       {/* NAV BAR (TRANSPARENT LIKE IMAGE 2) */}
-      <div className="border-t border-black/20">
+      <div className="border-t border-black/20 bg-white">
         <nav className="max-w-7xl mx-auto">
           <ul className="flex justify-center gap-14 py-6 text-base font-semibold text-black">
             <li><Link href="/">Home</Link></li>

@@ -1,8 +1,7 @@
 export default function DoctorsPage() {
   return (
-    
     <div className="min-h-screen bg-gray-50 px-6 py-12">
-      <h1 className="m-14 text-3xl font-bold text-gray-900 mb-8 ">
+      <h1 className="m-40 text-4xl font-bold text-gray-900 mb-8">
         Featured Doctors
       </h1>
 

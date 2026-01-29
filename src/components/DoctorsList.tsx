@@ -10,7 +10,7 @@ export default async function DoctorsList() {
         Our Doctors
       </h2>
 
-      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8">
+      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4  gap-8">
         {doctors.map((doctor: any) => (
           <div
             key={doctor.id}
@@ -20,8 +20,8 @@ export default async function DoctorsList() {
               src={doctor.photo.url}
               alt={doctor.name}
               width={400}
-              height={300}
-              className="w-full h-64 object-cover"
+              height={400}
+              className="w-full h-48 sm:h-52 md:h-56 lg:h-60 object-cover"
             />
 
             <div className="p-4 text-center">

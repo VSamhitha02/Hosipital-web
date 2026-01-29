@@ -5,7 +5,7 @@ export default function WhyChooseUs() {
         Why Choose Us?
       </h2>
 
-      <div className="max-w-6xl mx-auto grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-10 px-6 text-center">
+      <div className="max-w-6xl mx-auto grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 px-6 text-center">
         {[
           "NICU & PICU",
           "Emergency 24x7",

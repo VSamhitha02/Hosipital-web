@@ -7,8 +7,6 @@ import WhyChooseUs from "@/components/WhyChooseUs"
 export default function HomePage() {
   return (
     <main className="flex flex-col">
-      <section className="hero-bg">
-        <div className="hero-bg-content">
       {/* HERO SECTION (Background image starts here) */}
       <FindDoctorsHero />
 
@@ -20,8 +18,7 @@ export default function HomePage() {
 
       {/* FIND DOCTORS LIST */}
       <DoctorsList />
-</div>
-</section>
+
       {/* WHY CHOOSE US */}
       <WhyChooseUs />
     </main>

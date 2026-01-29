@@ -2,7 +2,10 @@ export function StatsBar() {
   return (
     <section className="mt-4">
       <div className="max-w-7xl mx-auto rounded-xl bg-gradient-to-r from-gray-200 to-gray-100 shadow-lg">
-        <div className="grid grid-cols-4 divide-x">
+        <div className="grid grid-cols-1 sm:grid-cols-2
+        md:grid-cols-3
+         lg:grid-cols-4
+         gap-6  divide-x">
           {[
             { title: "Modern Facilities", icon: "🏥" },
             { title: "Expert Team", icon: "👨‍⚕️" },

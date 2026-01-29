@@ -12,16 +12,16 @@ export default function FindDoctorsHero() {
       <div className="absolute inset-0 bg-white/70"></div>
 
       <div className="m-200 relative z-10 max-w-4xl px-6">
-        <p className="text-lg mb-2">
+        <p className="mt-80 text-lg mb-2">
           New Destination for
         </p>
 
-        <h1 className="text-4xl md:text-5xl font-bold text-center mb-16">
+        <h1 className="mt-10 text-4xl md:text-5xl font-bold text-center mb-16">
           Advanced Child Care in India
         </h1>
 
         {/* Cards */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-10">
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
           {["Book Appointment", "Facilities", "Vaccination", "Baby Growth Tracker"].map(
             (item) => (
               <div

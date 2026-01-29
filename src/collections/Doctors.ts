@@ -21,5 +21,10 @@ export const Doctors: CollectionConfig = {
       relationTo: "media",
       required: true,
     },
+    {
+        name: 'featured',
+        type: 'checkbox',
+        defaultValue: false,
+    },
   ],
 }

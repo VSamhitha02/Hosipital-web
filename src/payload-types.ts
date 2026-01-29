@@ -790,6 +790,7 @@ export interface Doctor {
   name: string;
   speciality?: string | null;
   photo: number | Media;
+  featured?: boolean | null;
   updatedAt: string;
   createdAt: string;
 }
@@ -1380,6 +1381,7 @@ export interface DoctorsSelect<T extends boolean = true> {
   name?: T;
   speciality?: T;
   photo?: T;
+  featured?: T;
   updatedAt?: T;
   createdAt?: T;
 }
