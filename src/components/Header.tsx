@@ -82,7 +82,7 @@ export default function Header() {
       {/* MOBILE OVERLAY */}
       {menuOpen && (
         <div
-          className=" bg-white fixed inset-0 bg-black/40 z-40 "
+          className=" fixed inset-0 bg-black/40 z-40 "
           onClick={() => setMenuOpen(false)}
         />
       )}
@@ -102,65 +102,117 @@ export default function Header() {
   {/* Close Button */}
   <button
     onClick={() => setMenuOpen(false)}
-    className="text-2xl text-gray-600"
+    className="text-2xl text-gray-600 bg-transparent"
   >
     ✕
   </button>
 </div>
 
 
-        {/* Drawer Content */}
-        <nav className="p-6 space-y-6 text-lg font-semibold">
+       {/* Drawer Content */}
+<nav className="p-4 space-y-3 text-base font-medium">
 
-          <Link href="/" onClick={() => setMenuOpen(false)}>Home</Link>
+  {/* HOME */}
+  <Link
+    href="/"
+    onClick={() => setMenuOpen(false)}
+    className="block w-full px-4 py-3 rounded-xl border hover:bg-gray-50"
+  >
+    Home
+  </Link>
 
-          {/* Child Care Dropdown */}
-          <div>
-            <button
-              onClick={() =>
-                setOpenDropdown(openDropdown === "child" ? null : "child")
-              }
-              className="flex justify-between w-full"
-            >
-              Child Care <span>▾</span>
-            </button>
-            {openDropdown === "child" && (
-              <div className="ml-4 mt-2 space-y-2 text-base text-gray-600">
-                <Link href="#">Pediatrics</Link>
-                <Link href="#">Neonatal Care</Link>
-              </div>
-            )}
-          </div>
+  {/* CHILD CARE */}
+  <div className="border rounded-xl">
+    <button
+      onClick={() =>
+        setOpenDropdown(openDropdown === "child" ? null : "child")
+      }
+      className="w-full px-4 py-3 flex justify-between items-center"
+    >
+      <span>Child Care</span>
+      <span className={`transition ${openDropdown === "child" ? "rotate-180" : ""}`}>
+        ▾
+      </span>
+    </button>
 
-          <Link href="/doctors" onClick={() => setMenuOpen(false)}>Our Doctors</Link>
-          <Link href="#" onClick={() => setMenuOpen(false)}>Facilities</Link>
+    {openDropdown === "child" && (
+      <div className="px-4 pb-3 space-y-2 text-sm text-gray-600">
+        <Link href="#" className="block">Pediatrics</Link>
+        <Link href="#" className="block">Neonatal Care</Link>
+      </div>
+    )}
+  </div>
 
-          {/* Parenting Dropdown */}
-          <div>
-            <button
-              onClick={() =>
-                setOpenDropdown(openDropdown === "parent" ? null : "parent")
-              }
-              className="flex justify-between w-full"
-            >
-              Parenting <span>▾</span>
-            </button>
-            {openDropdown === "parent" && (
-              <div className="ml-4 mt-2 space-y-2 text-base text-gray-600">
-                <Link href="#">Tips</Link>
-                <Link href="#">Nutrition</Link>
-              </div>
-            )}
-          </div>
+  {/* OUR DOCTORS */}
+  <Link
+    href="/doctors"
+    onClick={() => setMenuOpen(false)}
+    className="block w-full px-4 py-3 rounded-xl border hover:bg-gray-50"
+  >
+    Our Doctors
+  </Link>
 
-          <Link href="#">About Us</Link>
-          <Link href="#">Careers</Link>
-          <Link href="#">Contact Us</Link>
+  {/* FACILITIES */}
+  <Link
+    href="#"
+    onClick={() => setMenuOpen(false)}
+    className="block w-full px-4 py-3 rounded-xl border hover:bg-gray-50"
+  >
+    Facilities
+  </Link>
 
-          <button className="mt-6 w-full bg-purple-700 text-white py-3 rounded-lg">
-            Book Appointment
-          </button>
-        </nav>
+  {/* PARENTING */}
+  <div className="border rounded-xl">
+    <button
+      onClick={() =>
+        setOpenDropdown(openDropdown === "parent" ? null : "parent")
+      }
+      className="w-full px-4 py-3 flex justify-between items-center"
+    >
+      <span>Parenting</span>
+      <span className={`transition ${openDropdown === "parent" ? "rotate-180" : ""}`}>
+        ▾
+      </span>
+    </button>
+
+    {openDropdown === "parent" && (
+      <div className="px-4 pb-3 space-y-2 text-sm text-gray-600">
+        <Link href="#" className="block">Tips</Link>
+        <Link href="#" className="block">Nutrition</Link>
+      </div>
+    )}
+  </div>
+
+  {/* CAREERS */}
+  <Link
+    href="#"
+    className="block w-full px-4 py-3 rounded-xl border hover:bg-gray-50"
+  >
+    Careers
+  </Link>
+
+  {/* ABOUT US */}
+  <Link
+    href="#"
+    className="block w-full px-4 py-3 rounded-xl border hover:bg-gray-50"
+  >
+    About Us
+  </Link>
+
+  {/* CONTACT */}
+  <Link
+    href="#"
+    className="block w-full px-4 py-3 rounded-xl border hover:bg-gray-50"
+  >
+    Contact Us
+  </Link>
+
+  {/* CTA */}
+  {/* <button className="mt-4 w-full bg-purple-700 text-white py-3 rounded-xl">
+    Book Appointment
+  </button> */}
+</nav>
+
       </aside>
     </>
   )

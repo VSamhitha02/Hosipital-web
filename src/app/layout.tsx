@@ -10,6 +10,7 @@ export default function RootLayout({
     <html lang="en">
       <body>
         <Header />
+        <div className="h-[96px] lg:h-[120px]" />
         {children}
       </body>
     </html>
