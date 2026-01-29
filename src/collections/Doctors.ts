@@ -16,6 +16,15 @@ export const Doctors: CollectionConfig = {
       type: "text",
     },
     {
+      name: "languages",
+      type: "text",
+    },
+    {
+      name: "qualifications",
+      type: "text",
+    },
+
+    {
       name: "photo",
       type: "upload",
       relationTo: "media",

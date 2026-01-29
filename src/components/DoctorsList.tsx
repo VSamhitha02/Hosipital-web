@@ -1,5 +1,5 @@
-import Image from 'next/image'
-import { getDoctors } from '@/lib/getDoctors'
+import Image from "next/image"
+import { getDoctors } from "@/lib/getDoctors"
 
 export default async function DoctorsList() {
   const doctors = await getDoctors()
@@ -10,28 +10,73 @@ export default async function DoctorsList() {
         Our Doctors
       </h2>
 
-      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4  gap-8">
+      <div className="grid
+    grid-cols-1
+    md:grid-cols-2
+    lg:grid-cols-3 gap-3">
         {doctors.map((doctor: any) => (
           <div
             key={doctor.id}
-            className="rounded-xl border shadow-sm overflow-hidden bg-white"
+            className="bg-white rounded-2xl shadow-md p-6 flex flex-col justify-between"
           >
-            <Image
-              src={doctor.photo.url}
-              alt={doctor.name}
-              width={400}
-              height={400}
-              className="w-full h-48 sm:h-52 md:h-56 lg:h-60 object-cover"
-            />
+            {/* TOP */}
+            <div className="flex gap-6">
+              {/* Image */}
+              <div className="relative w-32 h-40 rounded-xl overflow-hidden bg-gray-100 flex-shrink-0">
+                <Image
+                  src={doctor.photo?.url || "/doctor-placeholder.png"}
+                  alt={doctor.name}
+                  fill
+                  className="object-cover"
+                />
 
-            <div className="p-4 text-center">
-              <h3 className="text-lg font-semibold">
-                {doctor.name}
-              </h3>
-              <p className="text-sm text-gray-600">
-                {doctor.specialization}
-              </p>
+                {/* Experience Badge */}
+                {/* {doctor.speciality && (
+                  <span className="absolute bottom-2 right-2 bg-purple-700 text-white text-xs px-3 py-1 rounded-full">
+                    {doctor.speciality}
+                  </span>
+                )} */}
+              </div>
+
+              {/* Details */}
+              <div className="flex-1">
+                <h3 className="text-lg font-bold text-gray-900">
+                  {doctor.name}
+                </h3>
+
+                {/* <p className="text-sm text-purple-700 font-medium mt-1">
+                  {doctor.speciality}
+                </p> */}
+                {/* Speciality  */}
+                {doctor.Speciality && (
+                  <div className="flex items-center gap-2 text-sm text-gray-600 mt-3">
+                    <span className="text-purple-600"></span>
+                    <span>{doctor.speciality}</span>
+                  </div>
+                )}
+
+                {/* Languages */}
+                {doctor.languages && (
+                  <div className="flex items-center gap-2 text-sm text-gray-600 mt-3">
+                    <span className="text-purple-600">🌐</span>
+                    <span>{doctor.languages}</span>
+                  </div>
+                )}
+
+                {/* Qualification */}
+                {doctor.qualifications && (
+                  <div className="flex items-start gap-2 text-sm text-gray-600 mt-2">
+                    <span className="text-purple-600 mt-0.5">🎓</span>
+                    <span>{doctor.qualifications}</span>
+                  </div>
+                )}
+              </div>
             </div>
+
+            {/* BUTTON */}
+            <button className="mt-6 w-full bg-purple-700 text-white py-3 rounded-full font-semibold hover:bg-purple-800 transition">
+              Book Appointment
+            </button>
           </div>
         ))}
       </div>
