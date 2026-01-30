@@ -2,17 +2,16 @@
 @tailwind components;
 @tailwind utilities;
 
+html,
 body {
-    scroll-behavior: smooth;
+  width: 100%;
+  overflow-x: hidden;
+  scroll-behavior: smooth;
+}
+
+body {
   @apply bg-white text-neutral-900;
-/* Background section till Why Choose Us */
-/* .FindDoctorshero-bg {
-  position: relative;
-  background-image: url("/images/child1.png");
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-} */
+}
 
 /* White overlay for readability */
 .hero-bg::before {
@@ -28,5 +27,6 @@ body {
   position: relative;
   z-index: 2;
 }
-
-}
+/* * {
+  outline: 1px solid red;
+} */

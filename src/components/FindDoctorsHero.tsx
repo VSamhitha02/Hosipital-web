@@ -3,22 +3,24 @@ export default function FindDoctorsHero() {
     <section
       className="
         relative
-        min-h-[70vh]
+        py-40
         flex
         items-center
         justify-center
         bg-cover
         bg-center
+        overflow-x-hidden
       "
       style={{
         backgroundImage: "url('/images/child1.png')",
       }}
     >
       {/* Overlay */}
-      <div className="absolute inset-0 bg-white/75" />
+      <div className="absolute inset-0 " />
 
       {/* Content */}
-      <div className="relative z-10 max-w-6xl w-full px-6 text-center">
+      <div className="relative z-10 w-full max-w-6xl px-4 sm:px-6 text-center">
+
         
         {/* Text block */}
         <div className="mb-14">
@@ -32,7 +34,7 @@ export default function FindDoctorsHero() {
         </div>
 
         {/* Cards */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-8">
+        <div className="grid grid-cols-2  sm:grid-cols-2 md:grid-cols-4 gap-8">
           {[
             "Book Appointment",
             "Facilities",
@@ -42,13 +44,7 @@ export default function FindDoctorsHero() {
             <div
               key={item}
               className="
-                bg-white
-                rounded-2xl
-                shadow-lg
-                px-8
-                py-10
-                hover:shadow-xl
-                transition
+               bg-white rounded-2xl shadow-lg p-6 sm:p-8 hover:shadow-xl transition
               "
             >
               <p className="font-semibold text-gray-800">

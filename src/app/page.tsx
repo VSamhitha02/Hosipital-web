@@ -8,10 +8,10 @@ export default function HomePage() {
   return (
     <main className="flex flex-col">
       {/* HERO SECTION (Background image starts here) */}
-      <FindDoctorsHero />
+      <div className="mt-30"><FindDoctorsHero /></div>
 
       {/* QUICK ACTION BUTTONS */}
-      <QuickActions />
+      {/* <QuickActions /> */}
 
       {/* STATS BAR */}
       <StatsBar />
