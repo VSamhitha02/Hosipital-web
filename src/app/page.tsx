@@ -1,6 +1,5 @@
 import DoctorsList from "@/components/DoctorsList"
 import FindDoctorsHero from "@/components/FindDoctorsHero"
-import { QuickActions } from "@/components/QuickActions"
 import { StatsBar } from "@/components/StatsBar"
 import WhyChooseUs from "@/components/WhyChooseUs"
 

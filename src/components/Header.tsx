@@ -3,10 +3,18 @@
 import Image from "next/image"
 import Link from "next/link"
 import { useEffect, useState } from "react"
+import { Button } from "@/components/ui/button"
+import { Input } from "@/components/ui/input"
+import {
+  Sheet,
+  SheetContent,
+  SheetTrigger,
+  SheetTitle,
+} from "@/components/ui/sheet"
+import { Search, Phone } from "lucide-react"
 
 export default function Header() {
   const [scrolled, setScrolled] = useState(false)
-  const [menuOpen, setMenuOpen] = useState(false)
   const [openDropdown, setOpenDropdown] = useState<string | null>(null)
 
   useEffect(() => {
@@ -25,14 +33,13 @@ export default function Header() {
       >
         {/* TOP BAR */}
         <div className="max-w-7xl mx-auto px-4 py-3 flex items-center gap-4">
-          {/* LEFT: Logo + Text */}
+          {/* LOGO */}
           <Link href="/" className="flex items-center gap-2 shrink-0">
             <Image
               src="/images/logo.png"
               alt="Vitalis Hospital Logo"
               width={48}
               height={48}
-              className="object-contain"
               priority
             />
 
@@ -44,35 +51,113 @@ export default function Header() {
             </div>
           </Link>
 
-          {/* Spacer */}
-          <div className="flex-1 lg:hidden" />
-
-          {/* HAMBURGER MENU (Mobile & Tablet) */}
-          <button
-            onClick={() => setMenuOpen(true)}
-            className="lg:hidden w-10 h-10 flex items-center justify-center rounded-full hover:bg-gray-100"
-          >
-            ☰
-          </button>
-
-          {/* SEARCH BAR (Desktop only) */}
+          {/* DESKTOP SEARCH */}
           <div className="hidden lg:flex flex-1 justify-center">
-            <input
-              type="text"
-              placeholder="Search Doctors"
-              className="h-11 w-full max-w-sm rounded-full border border-gray-300 px-5 shadow
-              focus:outline-none focus:ring-2 focus:ring-purple-500"
-            />
+            <div className="relative w-full max-w-md">
+              <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-gray-500" />
+              <Input
+                type="search"
+                placeholder="Search doctors"
+                className="pl-10"
+              />
+            </div>
           </div>
 
-          {/* DESKTOP ACTIONS (Desktop only) */}
+          {/* DESKTOP ACTIONS */}
           <div className="hidden lg:flex items-center gap-4 shrink-0">
             <div className="bg-purple-100 px-4 py-2 rounded-full text-purple-700 text-sm">
               📞 +91 91508 51095
             </div>
-            <button className="bg-purple-700 text-white px-5 py-2 rounded-lg">
+            <Button className="bg-purple-700 text-white">
               Book Appointment
-            </button>
+            </Button>
+          </div>
+
+          {/* MOBILE / TABLET ICONS */}
+          <div className="lg:hidden ml-auto flex items-center gap-2 ">
+            {/* PHONE ICON */}
+            <a href="tel:+919150851095" aria-label="Call hospital">
+              <Button variant="ghost" size="icon" >
+                <Phone className="h-5 w-5" />
+              </Button>
+            </a>
+
+            {/* SEARCH ICON */}
+            <Sheet>
+              <SheetTrigger asChild>
+                <Button variant="ghost" size="icon" aria-label="Search">
+                  <Search className="h-5 w-5" />
+                </Button>
+              </SheetTrigger>
+
+              <SheetContent side="top" className="p-4">
+                <SheetTitle className = "sr-only">
+                  search
+                </SheetTitle>
+                <div className="relative">
+                  <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-gray-500" />
+                  <Input
+                    type="search"
+                    placeholder="Search doctors"
+                    className="pl-10"
+                  />
+                </div>
+              </SheetContent>
+            </Sheet>
+
+            {/* HAMBURGER MENU */}
+            <Sheet>
+              <SheetTrigger asChild>
+                <Button className="bg-white" 
+                variant="ghost" size="icon" aria-label="Menu">
+                  ☰
+                </Button>
+              </SheetTrigger>
+
+              <SheetContent side="right" className="w-80 p-0 bg-white">
+                {/* MOBILE NAV */}
+                <nav className="p-4 space-y-3 font-medium bg-white">
+                  <Link href="/" className="block px-4 py-3 rounded-xl border">
+                    Home
+                  </Link>
+
+                  <div className="border rounded-xl">
+                    <Button
+                      variant="ghost"
+                      onClick={() =>
+                        setOpenDropdown(openDropdown === "child" ? null : "child")
+                      }
+                      className="w-full px-4 py-3 flex justify-between"
+                    >
+                      Child Care <span>▾</span>
+                    </Button>
+
+                    {openDropdown === "child" && (
+                      <div className="px-4 pb-3 space-y-2 text-sm ">
+                        <Link href="#">Pediatrics</Link>
+                        <Link href="#">Neonatal Care</Link>
+                      </div>
+                    )}
+                  </div>
+
+                  <Link href="/doctors" className="block px-4 py-3 rounded-xl border">
+                    Our Doctors
+                  </Link>
+                  <Link href="#" className="block px-4 py-3 rounded-xl border">
+                    Facilities
+                  </Link>
+                  <Link href="#" className="block px-4 py-3 rounded-xl border">
+                    Careers
+                  </Link>
+                  <Link href="#" className="block px-4 py-3 rounded-xl border">
+                    About Us
+                  </Link>
+                  <Link href="#" className="block px-4 py-3 rounded-xl border">
+                    Contact Us
+                  </Link>
+                </nav>
+              </SheetContent>
+            </Sheet>
           </div>
         </div>
 
@@ -92,73 +177,6 @@ export default function Header() {
           </nav>
         </div>
       </header>
-
-      {/* MOBILE OVERLAY */}
-      {menuOpen && (
-        <div
-          className="fixed inset-0 bg-black/40 z-40"
-          onClick={() => setMenuOpen(false)}
-        />
-      )}
-
-      {/* MOBILE DRAWER */}
-      <aside
-        className={`fixed top-0 right-0 h-full w-80 bg-white z-50
-        transform transition-transform duration-300
-        ${menuOpen ? "translate-x-0" : "translate-x-full"}`}
-      >
-        <div className="flex items-center justify-between p-4 border-b">
-          <div className="w-10 h-10 rounded-full bg-purple-100 flex items-center justify-center">
-            👤
-          </div>
-          <button
-            onClick={() => setMenuOpen(false)}
-            className="text-2xl"
-          >
-            ✕
-          </button>
-        </div>
-
-        <nav className="p-4 space-y-3 font-medium">
-          <Link href="/" onClick={() => setMenuOpen(false)} className="block px-4 py-3 rounded-xl border">
-            Home
-          </Link>
-
-          <div className="border rounded-xl">
-            <button
-              onClick={() =>
-                setOpenDropdown(openDropdown === "child" ? null : "child")
-              }
-              className="w-full px-4 py-3 flex justify-between"
-            >
-              Child Care <span>▾</span>
-            </button>
-
-            {openDropdown === "child" && (
-              <div className="px-4 pb-3 space-y-2 text-sm">
-                <Link href="#">Pediatrics</Link>
-                <Link href="#">Neonatal Care</Link>
-              </div>
-            )}
-          </div>
-
-          <Link href="/doctors" className="block px-4 py-3 rounded-xl border">
-            Our Doctors
-          </Link>
-          <Link href="#" className="block px-4 py-3 rounded-xl border">
-            Facilities
-          </Link>
-          <Link href="#" className="block px-4 py-3 rounded-xl border">
-            Careers
-          </Link>
-          <Link href="#" className="block px-4 py-3 rounded-xl border">
-            About Us
-          </Link>
-          <Link href="#" className="block px-4 py-3 rounded-xl border">
-            Contact Us
-          </Link>
-        </nav>
-      </aside>
     </>
   )
 }

@@ -1,5 +1,6 @@
 import Image from "next/image"
 import { getDoctors } from "@/lib/getDoctors"
+import { Button } from "./ui/button"
 
 export default async function DoctorsList() {
   const doctors = await getDoctors()
@@ -74,9 +75,9 @@ export default async function DoctorsList() {
             </div>
 
             {/* BUTTON */}
-            <button className="mt-6 w-full bg-purple-700 text-white py-3 rounded-full font-semibold hover:bg-purple-800 transition">
+            <Button className=" bg-purple-700  hover:bg-purple-800 ">
               Book Appointment
-            </button>
+            </Button>
           </div>
         ))}
       </div>
