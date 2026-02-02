@@ -1,3 +1,4 @@
+import ContactSection from "@/components/ContactSection"
 import DoctorsList from "@/components/DoctorsList"
 import FindDoctorsHero from "@/components/FindDoctorsHero"
 import { StatsBar } from "@/components/StatsBar"
@@ -20,6 +21,9 @@ export default function HomePage() {
 
       {/* WHY CHOOSE US */}
       <WhyChooseUs />
+
+       {/* FORM COMES RIGHT AFTER */}
+      <ContactSection />
     </main>
   )
 }

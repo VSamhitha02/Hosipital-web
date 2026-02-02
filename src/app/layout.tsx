@@ -12,7 +12,8 @@ export default function RootLayout({
         <Header />
         <div className="h-[96px] lg:h-[120px]" />
         {children}
-      </body>
-    </html>
+        {/* <Toaster /> */}
+        </body>
+        </html>
   )
 }
