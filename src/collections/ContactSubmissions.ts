@@ -5,10 +5,10 @@ export const ContactSubmissions: CollectionConfig = {
   admin: {
     useAsTitle: "name",
   },
-  access: {
-    create: () => true,
-    read: () => true,
-  },
+  // access: {
+  //   create: () => true,
+  //   read: () => true,
+  // },
   fields: [
     { name: "name", 
       type: "text", 

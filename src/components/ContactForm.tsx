@@ -25,18 +25,31 @@ export default function ContactForm() {
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(data),
       })
+      const result = await res.json()
+    // console.log("STATUS:", res.status)
+    //   if (!res.ok) throw new Error()
 
-      if (!res.ok) throw new Error()
+    //   setStatus("success")
+    //   e.currentTarget.reset()
+    // } catch {
+    //   setStatus("error")
+    // } finally {
+    //   setLoading(false)
+    // }
+     if (!res.ok) {
+  throw new Error("Request failed")
+}
 
-      setStatus("success")
-      e.currentTarget.reset()
-    } catch {
-      setStatus("error")
-    } finally {
-      setLoading(false)
+setStatus("success")
+}
+   catch {
+       setStatus("error")
+     } finally {
+       setLoading(false)
     }
-  }
-
+}
+  
+  
   return (
     <form onSubmit={handleSubmit} className="space-y-6">
       <div className="grid md:grid-cols-2 gap-4">
