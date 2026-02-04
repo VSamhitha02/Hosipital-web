@@ -1,90 +1,110 @@
 "use client"
 
-import { useState } from "react"
+import { useState, useRef } from "react"
+import axios from "axios"
+
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Textarea } from "@/components/ui/textarea"
 
-type Status = "idle" | "success" | "error"
+import {
+  Dialog,
+  DialogContent,
+  DialogHeader,
+  DialogTitle,
+} from "@/components/ui/dialog"
 
 export default function ContactForm() {
+  const formRef = useRef<HTMLFormElement>(null)
+
   const [loading, setLoading] = useState(false)
-  const [status, setStatus] = useState<Status>("idle")
+  const [open, setOpen] = useState(false)
+  const [success, setSuccess] = useState(false)
 
   async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault()
     setLoading(true)
-    setStatus("idle")
 
     const formData = new FormData(e.currentTarget)
     const data = Object.fromEntries(formData)
 
     try {
-      const res = await fetch("/api/contact", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(data),
-      })
-      const result = await res.json()
-    // console.log("STATUS:", res.status)
-    //   if (!res.ok) throw new Error()
+      const res = await axios.post("/api/contact", data)
 
-    //   setStatus("success")
-    //   e.currentTarget.reset()
-    // } catch {
-    //   setStatus("error")
-    // } finally {
-    //   setLoading(false)
-    // }
-     if (!res.ok) {
-  throw new Error("Request failed")
-}
-
-setStatus("success")
-}
-   catch {
-       setStatus("error")
-     } finally {
-       setLoading(false)
+      if (res.status === 200) {
+        setSuccess(true)
+        formRef.current?.reset()
+      } else {
+        setSuccess(false)
+      }
+    } catch (error) {
+      setSuccess(false)
+    } finally {
+      setOpen(true)
+      setLoading(false)
     }
-}
-  
-  
+  }
+
   return (
-    <form onSubmit={handleSubmit} className="space-y-6">
-      <div className="grid md:grid-cols-2 gap-4">
-        <Input name="name" placeholder="Patient Name" required />
-        <Input name="age" placeholder="Age" required />
-        <Input name="phone" placeholder="Phone Number" required />
-        <Input name="email" type="email" placeholder="Email" required />
-      </div>
-
-      <Textarea
-        name="message"
-        placeholder="Type your message..."
-        required
-      />
-
-      <Button
-        type="submit"
-        className="w-full bg-purple-700"
-        disabled={loading}
+    <>
+      <form
+        ref={formRef}
+        onSubmit={handleSubmit}
+        className="space-y-6"
       >
-        {loading ? "Submitting..." : "Submit"}
-      </Button>
+        <div className="grid md:grid-cols-2 gap-4">
+          <Input name="name" placeholder="Patient Name" required />
+          <Input name="age" placeholder="Age" required />
+          <Input name="phone" placeholder="Phone Number" required />
+          <Input name="email" type="email" placeholder="Email" required />
+        </div>
 
-      {/* Success / Error message */}
-      {status === "success" && (
-        <p className="text-green-600 text-center font-medium">
-          ✅ Message sent successfully!
-        </p>
-      )}
+        <Textarea
+          name="message"
+          placeholder="Type your message..."
+          required
+        />
 
-      {status === "error" && (
-        <p className="text-red-600 text-center font-medium">
-          ❌ Something went wrong. Please try again.
-        </p>
-      )}
-    </form>
+        <Button
+          type="submit"
+          className="w-full bg-purple-700"
+          disabled={loading}
+        >
+          {loading ? "Submitting..." : "Submit"}
+        </Button>
+      </form>
+
+      {/* DIALOG */}
+      <Dialog open={open} onOpenChange={setOpen}>
+        <DialogContent className="text-center bg-white">
+          <DialogHeader>
+            <DialogTitle className="flex justify-center items-center gap-2">
+              {success ? (
+                <>
+                  <span className="text-green-600">Success</span> ✅
+                </>
+              ) : (
+                <>
+                  <span className="text-red-600">Error</span> ❌
+                </>
+              )}
+            </DialogTitle>
+          </DialogHeader>
+
+          <p className="mt-4 bg-white">
+            {success
+              ? "Your message has been sent successfully."
+              : "Something went wrong. Please try again later."}
+          </p>
+
+          <Button
+            className="mt-6 bg-purple-700 w-full"
+            onClick={() => setOpen(false)}
+          >
+            Close
+          </Button>
+        </DialogContent>
+      </Dialog>
+    </>
   )
 }
