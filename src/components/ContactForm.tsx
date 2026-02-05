@@ -1,69 +1,50 @@
 "use client"
 
-import { useState, useRef } from "react"
-import axios from "axios"
-
+import { useState } from "react"
+import { submitContact } from "@/actions/submitContact"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Textarea } from "@/components/ui/textarea"
-
 import {
   Dialog,
   DialogContent,
   DialogHeader,
   DialogTitle,
+  DialogFooter,
 } from "@/components/ui/dialog"
 
 export default function ContactForm() {
-  const formRef = useRef<HTMLFormElement>(null)
-
   const [loading, setLoading] = useState(false)
   const [open, setOpen] = useState(false)
-  const [success, setSuccess] = useState(false)
+  const [status, setStatus] = useState<"success" | "error">("success")
 
-  async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
-    e.preventDefault()
+  async function handleSubmit(formData: FormData) {
     setLoading(true)
 
-    const formData = new FormData(e.currentTarget)
-    const data = Object.fromEntries(formData)
+    const res = await submitContact(formData)
 
-    try {
-      const res = await axios.post("/api/contact", data)
-
-      if (res.status === 200) {
-        setSuccess(true)
-        formRef.current?.reset()
-      } else {
-        setSuccess(false)
-      }
-    } catch (error) {
-      setSuccess(false)
-    } finally {
-      setOpen(true)
-      setLoading(false)
+    if (res.success) {
+      setStatus("success")
+    } else {
+      setStatus("error")
     }
+
+    setLoading(false)
+    setOpen(true)
   }
 
   return (
     <>
-      <form
-        ref={formRef}
-        onSubmit={handleSubmit}
-        className="space-y-6"
-      >
+      {/* IMPORTANT: action instead of onSubmit */}
+      <form action={handleSubmit} className="space-y-6">
         <div className="grid md:grid-cols-2 gap-4">
           <Input name="name" placeholder="Patient Name" required />
-          <Input name="age" placeholder="Age" required />
+          <Input name="age" placeholder="Age" />
           <Input name="phone" placeholder="Phone Number" required />
           <Input name="email" type="email" placeholder="Email" required />
         </div>
 
-        <Textarea
-          name="message"
-          placeholder="Type your message..."
-          required
-        />
+        <Textarea name="message" placeholder="Your message..." required />
 
         <Button
           type="submit"
@@ -74,35 +55,30 @@ export default function ContactForm() {
         </Button>
       </form>
 
-      {/* DIALOG */}
+      {/* SHADCN DIALOG */}
       <Dialog open={open} onOpenChange={setOpen}>
-        <DialogContent className="text-center bg-white">
-          <DialogHeader>
-            <DialogTitle className="flex justify-center items-center gap-2">
-              {success ? (
-                <>
-                  <span className="text-green-600">Success</span> ✅
-                </>
-              ) : (
-                <>
-                  <span className="text-red-600">Error</span> ❌
-                </>
-              )}
+        <DialogContent className="bg-white">
+          <DialogHeader className="bg-white">
+            <DialogTitle>
+              {status === "success"
+                ? "Message Sent"
+                : "Submission Failed"}
             </DialogTitle>
           </DialogHeader>
 
-          <p className="mt-4 bg-white">
-            {success
-              ? "Your message has been sent successfully."
-              : "Something went wrong. Please try again later."}
+          <p className="text-sm text-gray-600 bg-white">
+            {status === "success"
+              ? "Your message has been submitted successfully."
+              : "Something went wrong. Please try again."}
           </p>
-
+          <DialogFooter>
           <Button
-            className="mt-6 bg-purple-700 w-full"
             onClick={() => setOpen(false)}
-          >
-            Close
-          </Button>
+            className = "bg-purple-700"
+            >
+              Ok
+              </Button>
+          </DialogFooter>
         </DialogContent>
       </Dialog>
     </>

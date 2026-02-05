@@ -1,34 +1,25 @@
+import { getPayload } from "payload"
+import config from "@payload-config"
 import { NextResponse } from "next/server"
 
 export async function POST(req: Request) {
   try {
-    const body = await req.json().catch(() => null)
+    const payload = await getPayload({ config })
+    const body = await req.json()
 
-    if (!body) {
-      return NextResponse.json(
-        { success: false, message: "Invalid request body" },
-        { status: 400 }
-      )
-    }
-
-    // 🔜 Later you can add:
-    // await payload.create({ ... })
+    await payload.create({
+      collection: "contact-submissions",
+      data: body,
+    })
 
     return NextResponse.json(
-      {
-        success: true,
-        message: "Message stored successfully",
-      },
+      { success: true, message: "Message submitted successfully" },
       { status: 200 }
     )
   } catch (error) {
     console.error("CONTACT API ERROR:", error)
-
     return NextResponse.json(
-      {
-        success: false,
-        message: "Server error",
-      },
+      { success: false, message: "Something went wrong" },
       { status: 500 }
     )
   }

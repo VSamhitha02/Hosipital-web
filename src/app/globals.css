@@ -2,6 +2,26 @@
 @tailwind components;
 @tailwind utilities;
 
+:root {
+  /* ===== Vitalis Brand Colors ===== */
+  --color-primary: #6b21a8;        /* Purple */
+  --color-primary-soft: #ede9fe;
+  --color-accent: #16a34a;         /* Green */
+  --color-text-main: #111827;
+  --color-text-muted: #6b7280;
+  --color-bg-main: #ffffff;
+  --color-bg-soft: #f9fafb;
+
+  /* ===== Fonts ===== */
+  --font-heading: "Poppins", sans-serif;
+  --font-body: "Inter", sans-serif;
+
+  /* ===== Radius ===== */
+  --radius-sm: 6px;
+  --radius-md: 12px;
+  --radius-lg: 20px;
+}
+
 html,
 body {
   width: 100%;
@@ -10,17 +30,31 @@ body {
 }
 
 body {
-  @apply bg-white text-neutral-900;
+  body {
+  font-family: var(--font-body);
+  background-color: var(--color-bg-main);
+  color: var(--color-text-main);
 }
 
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-heading);
+}
+
+
 /* White overlay for readability */
-.hero-bg::before {
+ .hero-bg::before {
   content: "";
   position: absolute;
   inset: 0;
-  background: rgba(255, 255, 255, 0.85);
+  /* background: rgba(255, 255, 255, 0.85); */
+  background: color-mix(in srgb, var(--color-bg-main) 85%, transparent);
+
   z-index: 1;
-}
+} 
+ 
+
 
 /* Content stays above overlay */
 .hero-bg-content {
@@ -30,3 +64,11 @@ body {
 /* * {
   outline: 1px solid red;
 } */
+.section-soft {
+  background-color: var(--color-bg-soft);
+}
+
+.card {
+  background-color: var(--color-bg-main);
+  border-radius: var(--radius-lg);
+}
