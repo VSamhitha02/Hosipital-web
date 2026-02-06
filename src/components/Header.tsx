@@ -68,7 +68,7 @@ export default function Header() {
           <div className="bg-purple-100 px-4 py-2 rounded-full text-purple-700 text-sm">
             📞 +91 91508 51095
           </div>
-          <Button className="bg-purple-700 text-white">
+          <Button className="bg-[var(--color-primary)] text-white">
             Book Appointment
           </Button>
         </div>

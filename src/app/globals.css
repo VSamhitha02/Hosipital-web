@@ -2,73 +2,26 @@
 @tailwind components;
 @tailwind utilities;
 
+/*BRAND THEME VARIABLES*/
 :root {
-  /* ===== Vitalis Brand Colors ===== */
-  --color-primary: #6b21a8;        /* Purple */
-  --color-primary-soft: #ede9fe;
-  --color-accent: #16a34a;         /* Green */
-  --color-text-main: #111827;
-  --color-text-muted: #6b7280;
-  --color-bg-main: #ffffff;
-  --color-bg-soft: #f9fafb;
+  --primary: 270 70% 45%;              /* Purple */
+  --primary-foreground: 0 0% 100%;     /* White */
 
-  /* ===== Fonts ===== */
-  --font-heading: "Poppins", sans-serif;
-  --font-body: "Inter", sans-serif;
+  --secondary: 220 14% 96%;
+  --secondary-foreground: 220 9% 15%;
 
-  /* ===== Radius ===== */
-  --radius-sm: 6px;
-  --radius-md: 12px;
-  --radius-lg: 20px;
+  --font-primary: "Inter", sans-serif;
 }
 
+/*GLOBAL BASE STYLES*/
+body {
+  @apply bg-white text-neutral-900 font-primary;
+}
+
+/* Prevent horizontal scroll */
 html,
 body {
   width: 100%;
   overflow-x: hidden;
   scroll-behavior: smooth;
-}
-
-body {
-  body {
-  font-family: var(--font-body);
-  background-color: var(--color-bg-main);
-  color: var(--color-text-main);
-}
-
-}
-
-h1, h2, h3, h4, h5, h6 {
-  font-family: var(--font-heading);
-}
-
-
-/* White overlay for readability */
- .hero-bg::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  /* background: rgba(255, 255, 255, 0.85); */
-  background: color-mix(in srgb, var(--color-bg-main) 85%, transparent);
-
-  z-index: 1;
-} 
- 
-
-
-/* Content stays above overlay */
-.hero-bg-content {
-  position: relative;
-  z-index: 2;
-}
-/* * {
-  outline: 1px solid red;
-} */
-.section-soft {
-  background-color: var(--color-bg-soft);
-}
-
-.card {
-  background-color: var(--color-bg-main);
-  border-radius: var(--radius-lg);
 }

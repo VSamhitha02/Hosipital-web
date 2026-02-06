@@ -47,8 +47,9 @@ export default function ContactForm() {
         <Textarea name="message" placeholder="Your message..." required />
 
         <Button
+          variant="default"
           type="submit"
-          className="w-full bg-purple-700"
+          className="w-full"
           disabled={loading}
         >
           {loading ? "Submitting..." : "Submit"}
@@ -58,7 +59,7 @@ export default function ContactForm() {
       {/* SHADCN DIALOG */}
       <Dialog open={open} onOpenChange={setOpen}>
         <DialogContent className="bg-white">
-          <DialogHeader className="bg-white">
+          <DialogHeader className="">
             <DialogTitle>
               {status === "success"
                 ? "Message Sent"
@@ -66,7 +67,7 @@ export default function ContactForm() {
             </DialogTitle>
           </DialogHeader>
 
-          <p className="text-sm text-gray-600 bg-white">
+          <p className="text-sm ">
             {status === "success"
               ? "Your message has been submitted successfully."
               : "Something went wrong. Please try again."}
@@ -74,7 +75,7 @@ export default function ContactForm() {
           <DialogFooter>
           <Button
             onClick={() => setOpen(false)}
-            className = "bg-purple-700"
+            className = ""
             >
               Ok
               </Button>

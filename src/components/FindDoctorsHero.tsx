@@ -24,7 +24,7 @@ export default function FindDoctorsHero() {
         
         {/* Text block */}
         <div className="mb-14">
-          <p className="text-lg text-gray-700 mb-3">
+          <p className="text-[var(--color-primary1)] font-bold mb-3">
             New Destination for
           </p>
 

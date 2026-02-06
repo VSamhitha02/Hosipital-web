@@ -13,23 +13,18 @@ export default function WhyChooseUs() {
   ]
 
   return (
-    <section className="bg-purple-700 text-white py-16">
-      <h2 className="text-2xl md:text-4xl font-bold text-center mb-10">
+    <section className="bg-primary text-primary-foreground py-16">
+      <h2 className="text-3xl md:text-4xl font-bold text-center mb-10">
         Why Choose Us?
       </h2>
 
       <div className="max-w-7xl mx-auto grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 px-4">
         {items.map((item) => (
-          <Card
-            key={item.title}
-            className="bg-purple-600/40 border-none"
-          >
+          <Card key={item.title} className="bg-white/15 border-none">
             <CardContent className="p-6 flex flex-col items-center text-center">
-              {/* Icon placeholder */}
-              <div className="w-12 h-12 md:w-16 md:h-16 bg-white text-purple-700 rounded-full flex items-center justify-center text-xl md:text-2xl mb-3">
+              <div className="w-14 h-14 bg-white text-primary rounded-full flex items-center justify-center text-2xl mb-3">
                 ✓
               </div>
-
               <p className="text-sm md:text-lg font-medium">
                 {item.title}
               </p>
