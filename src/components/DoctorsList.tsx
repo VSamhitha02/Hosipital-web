@@ -39,7 +39,7 @@ export default async function DoctorsList() {
 
                 {/* Speciality */}
                 {doctor.speciality && (
-                  <p className="text-sm font-medium text-primary mt-1">
+                  <p className="text-sm font-medium  text-gray-500 mt-1">
                     {doctor.speciality}
                   </p>
                 )}
