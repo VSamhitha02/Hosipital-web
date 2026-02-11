@@ -63,7 +63,7 @@ export default function Header() {
         <div className="hidden lg:flex flex-1 justify-center">
           <div className="relative w-full max-w-md">
             <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-gray-500" />
-            <Input placeholder="Search doctors" className="pl-10" />
+            <Input placeholder="Search doctors" className="pl-10 boder-border " />
           </div>
         </div>
 
@@ -74,6 +74,12 @@ export default function Header() {
           </div>
           <Button>Book Appointment</Button>
         </div>
+
+        <div className="hidden xl:flex items-center justify-between"> 
+          <div className="w-10 h-10 rounded-full border border-border flex items-center justify-center text-primary"> 
+            👤 
+            </div> 
+            </div>
 
         {/* MOBILE ICONS */}
         <div className="lg:hidden ml-auto flex items-center gap-2">
@@ -114,7 +120,7 @@ export default function Header() {
 
   {/* PROFILE + CTA */}
   <div className="flex items-center gap-4 mb-6">
-    <div className="w-12 h-12 rounded-full border flex items-center justify-center text-primary text-lg">
+    <div className="w-12 h-12 rounded-full border border-border flex items-center justify-center text-primary text-lg">
       👤
     </div>
 
@@ -127,14 +133,14 @@ export default function Header() {
   
 
   {/* DIVIDER */}
-  <div className="border-b mb-6" />
+  <div className="border-b border-border mb-6" />
 
   {/* NAVIGATION */}
   <nav className="space-y-2 text-[15px] font-medium">
 
     <Link
       href="/"
-      className="flex items-center justify-between px-3 py-3 rounded-md hover:bg-gray-100"
+      className="flex items-center justify-between px-3 py-3 rounded-md hover:bg-gray-100 hover:text-primary"
     >
       Home
     </Link>
@@ -143,7 +149,7 @@ export default function Header() {
     <Accordion type="single" collapsible className="w-full">
 
       <AccordionItem value="child-care" className="border-none">
-        <AccordionTrigger className="px-3 py-3 hover:bg-gray-100 rounded-md">
+        <AccordionTrigger className="px-3 py-3 hover:bg-gray-100 rounded-md hover:text-primary">
           Child Care
         </AccordionTrigger>
         <AccordionContent className="pl-6 pb-2 space-y-2 text-sm">
@@ -157,7 +163,7 @@ export default function Header() {
       </AccordionItem>
 
       <AccordionItem value="parenting" className="border-none">
-        <AccordionTrigger className="px-3 py-3 hover:bg-gray-100 rounded-md">
+        <AccordionTrigger className="px-3 py-3 hover:bg-gray-100 rounded-md hover:text-primary">
           Parenting
         </AccordionTrigger>
         <AccordionContent className="pl-6 pb-2 space-y-2 text-sm">
@@ -174,35 +180,35 @@ export default function Header() {
 
     <Link
       href="/doctors"
-      className="flex items-center justify-between px-3 py-3 rounded-md hover:bg-gray-100"
+      className="flex items-center justify-between px-3 py-3 rounded-md hover:bg-gray-100 hover:text-primary"
     >
       Our Doctors
     </Link>
 
     <Link
       href="#"
-      className="flex items-center justify-between px-3 py-3 rounded-md hover:bg-gray-100"
+      className="flex items-center justify-between px-3 py-3 rounded-md hover:bg-gray-100 hover:text-primary"
     >
       Facilities
     </Link>
 
     <Link
       href="#"
-      className="flex items-center justify-between px-3 py-3 rounded-md hover:bg-gray-100"
+      className="flex items-center justify-between px-3 py-3 rounded-md hover:bg-gray-100 hover:text-primary"
     >
       Careers
     </Link>
 
     <Link
       href="#"
-      className="flex items-center justify-between px-3 py-3 rounded-md hover:bg-gray-100"
+      className="flex items-center justify-between px-3 py-3 rounded-md hover:bg-gray-100 hover:text-primary"
     >
       About Us
     </Link>
 
     <Link
       href="#"
-      className="flex items-center justify-between px-3 py-3 rounded-md hover:bg-gray-100"
+      className="flex items-center justify-between px-3 py-3 rounded-md hover:bg-gray-100 hover:text-primary"
     >
       Contact Us
     </Link>
@@ -216,7 +222,7 @@ export default function Header() {
       </div>
 
       {/* DESKTOP NAV */}
-      <div className="hidden lg:block border-t bg-white">
+      <div className="hidden lg:block border-t border-border bg-white">
         <nav className="max-w-7xl mx-auto">
           <ul className="flex justify-center gap-14 py-3 font-semibold">
 
@@ -227,7 +233,7 @@ export default function Header() {
                 <DropdownMenuTrigger className="flex items-center gap-1">
                   Child Care ▾
                 </DropdownMenuTrigger>
-                <DropdownMenuContent>
+                <DropdownMenuContent className="bg-white">
                   <DropdownMenuItem asChild><Link href="#">Pediatrics</Link></DropdownMenuItem>
                   <DropdownMenuItem asChild><Link href="#">Neonatal Care</Link></DropdownMenuItem>
                 </DropdownMenuContent>
@@ -242,7 +248,7 @@ export default function Header() {
                 <DropdownMenuTrigger className="flex items-center gap-1">
                   Parenting ▾
                 </DropdownMenuTrigger>
-                <DropdownMenuContent>
+                <DropdownMenuContent className="bg-white">
                   <DropdownMenuItem asChild><Link href="#">Tips</Link></DropdownMenuItem>
                   <DropdownMenuItem asChild><Link href="#">Nutrition</Link></DropdownMenuItem>
                 </DropdownMenuContent>

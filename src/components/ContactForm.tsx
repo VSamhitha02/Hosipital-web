@@ -36,15 +36,15 @@ export default function ContactForm() {
   return (
     <>
       {/* IMPORTANT: action instead of onSubmit */}
-      <form action={handleSubmit} className="space-y-6">
-        <div className="grid md:grid-cols-2 gap-4">
-          <Input name="name" placeholder="Patient Name" required />
-          <Input name="age" placeholder="Age" />
-          <Input name="phone" placeholder="Phone Number" required />
-          <Input name="email" type="email" placeholder="Email" required />
+      <form action={handleSubmit} className="text-gray-600 space-y-6">
+        <div className="grid md:grid-cols-2 gap-4  text-gray-600">
+          <Input className="border border-border" name="name" placeholder="Patient Name" required text-color="text-grey-600"/>
+          <Input className="border border-border" name="age" placeholder="Age" />
+          <Input className="border border-border" name="phone" placeholder="Phone Number" required />
+          <Input className="border border-border" name="email" type="email" placeholder="Email" required />
         </div>
 
-        <Textarea name="message" placeholder="Your message..." required />
+        <Textarea  className="border border-border" name="message" placeholder="Your message..." required />
 
         <Button
           variant="default"

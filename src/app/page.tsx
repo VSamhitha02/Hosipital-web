@@ -21,6 +21,8 @@ export default function HomePage() {
 
       {/* WHY CHOOSE US */}
       <WhyChooseUs />
+      
+
 
        {/* FORM COMES RIGHT AFTER */}
       <ContactSection />

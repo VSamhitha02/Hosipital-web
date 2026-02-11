@@ -23,7 +23,7 @@ export default function RootLayout({
     <html lang="en">
       <body>
         <Header />
-        <div className="h-[96px] lg:h-[120px]" />
+        <div className="lg:h-[100]" />
         {children}
         {/* <Toaster /> */}
         </body>

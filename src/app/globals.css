@@ -1,60 +1,39 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import "tailwindcss";
 
-/* ================================
-   BRAND THEME VARIABLES (SHADCN)
-================================ */
+/* THEME VARIABLES */
 :root {
-  /* PRIMARY (Purple) */
   --primary: 270 91% 45%;
   --primary-foreground: 0 0% 100%;
 
-  /* SECONDARY (Soft purple background) */
   --secondary: 270 30% 96%;
   --secondary-foreground: 270 80% 30%;
 
-  /* BASE */
   --background: 0 0% 100%;
   --foreground: 222 47% 11%;
 
-  /* BORDER / MUTED (important for cards & sections) */
-  --border: 220 13% 91%;
-  --muted: 220 14% 96%;
-  --muted-foreground: 220 9% 46%;
+  --border: 220 13% 91%
 }
 
-/* ================================
-   BASE STYLES
-================================ */
-@layer base {
-  body {
-    @apply bg-background text-foreground font-body;
-  }
+/* Map Tailwind colors */
+@theme {
+  --color-primary: hsl(var(--primary));
+  --color-primary-foreground: hsl(var(--primary-foreground));
+  --color-secondary: hsl(var(--secondary));
+  --color-secondary-foreground: hsl(var(--secondary-foreground));
+  --color-background: hsl(var(--background));
+  --color-foreground: hsl(var(--foreground));
+
+  --color-border: hsl(var(--border));
 }
 
-/* ================================
-   REUSABLE UI STYLES
-================================ */
-@layer components {
-  /* Menu items (mobile sheet) */
-  .menu-item {
-    @apply block px-4 py-3 rounded-xl border border-border
-    transition hover:bg-primary hover:text-primary-foreground;
-  }
-
-  .submenu {
-    @apply block px-3 py-2 rounded-lg text-sm
-    hover:bg-primary/10 hover:text-primary;
-  }
+/* Base styles */
+body {
+  background-color: hsl(var(--background));
+  color: hsl(var(--foreground));
 }
 
-/* ================================
-   GLOBAL FIXES
-================================ */
 html,
 body {
   width: 100%;
   overflow-x: hidden;
-  scroll-behavior: smooth;
 }
