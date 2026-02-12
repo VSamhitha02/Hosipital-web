@@ -20,19 +20,13 @@ const nextConfig = {
       }),
     ],
   },
-  
-  "rules": {
-    "react/no-unescaped-entities": "off"
-  },
-
-
   webpack: (webpackConfig) => {
     webpackConfig.resolve.extensionAlias = {
       '.cjs': ['.cts', '.cjs'],
       '.js': ['.ts', '.tsx', '.js', '.jsx'],
       '.mjs': ['.mts', '.mjs'],
     }
-
+    
 
     return webpackConfig
   },
