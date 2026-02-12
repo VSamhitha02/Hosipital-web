@@ -11,7 +11,7 @@ export default function ContactSection() {
           className="text-3xl font-bold text-center"
           style={{ color: "text-black" }}
         >
-           {"We are here to support you"}
+           "We are here to support you"
         </h2>
 
         <p
